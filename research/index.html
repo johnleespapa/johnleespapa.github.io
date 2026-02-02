@@ -4,14 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sangkeun Matthew Lee</title>
-  <meta name="description" content="Sangkeun Matthew Lee — personal research homepage with selected work, projects, and links." />
+  <meta name="description" content="Sangkeun Matthew (Matt) Lee — research profile, selected work, and links." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --bg: #0b0f14;
-      --card: rgba(16, 24, 36, 0.72);
+      --panel: rgba(16, 24, 36, 0.72);
       --text: #e6edf3;
       --muted: #9fb0c0;
       --accent: #7aa2ff;
@@ -35,25 +36,25 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .container { max-width: 1020px; margin: 0 auto; padding: 56px 20px 64px; }
+    .container { max-width: 1060px; margin: 0 auto; padding: 54px 20px 70px; }
 
     header {
       display: grid;
-      grid-template-columns: 110px 1fr;
+      grid-template-columns: 96px 1fr;
       gap: 18px;
       align-items: center;
-      padding-bottom: 22px;
+      padding-bottom: 18px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 700px) {
       header { grid-template-columns: 1fr; }
     }
 
     .headshot {
-      width: 110px;
-      height: 110px;
+      width: 96px;
+      height: 96px;
       border-radius: 18px;
       object-fit: cover;
       border: 1px solid var(--border);
@@ -61,7 +62,7 @@
     }
 
     h1 {
-      font-size: 2.1rem;
+      font-size: 2.05rem;
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.15;
@@ -70,26 +71,39 @@
     .subtitle {
       margin-top: 6px;
       color: var(--muted);
-      font-weight: 400;
+      font-weight: 500;
     }
 
-    .pills {
+    .tagline {
+      margin-top: 8px;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .cta {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
-      margin-top: 12px;
+      gap: 10px;
+      margin-top: 14px;
     }
 
-    .pill {
+    .btn {
       display: inline-flex;
       align-items: center;
-      padding: 10px 12px;
-      border: 1px solid var(--border);
+      justify-content: center;
+      padding: 10px 14px;
       border-radius: 999px;
+      border: 1px solid var(--border);
       background: rgba(16, 24, 36, 0.55);
       color: var(--text);
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .btn.primary {
+      background: rgba(122, 162, 255, 0.16);
+      border-color: rgba(122, 162, 255, 0.40);
     }
 
     .layout {
@@ -97,6 +111,7 @@
       grid-template-columns: 1.35fr 0.65fr;
       gap: 16px;
       align-items: start;
+      margin-top: 16px;
     }
 
     @media (max-width: 980px) {
@@ -104,7 +119,7 @@
     }
 
     .card {
-      background: var(--card);
+      background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 18px;
@@ -122,31 +137,44 @@
     ul { margin-left: 18px; }
     li { margin: 6px 0; }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    @media (max-width: 780px) {
-      .two-col { grid-template-columns: 1fr; }
-    }
-
-    .meta {
+    .metrics {
       display: grid;
       grid-template-columns: 1fr;
       gap: 10px;
     }
 
-    .meta .row {
+    .metric {
       padding: 12px;
       border: 1px solid var(--border);
       border-radius: 12px;
       background: rgba(10, 15, 20, 0.25);
     }
 
-    .label { color: var(--text); font-weight: 600; font-size: 0.95rem; }
-    .value { margin-top: 4px; color: var(--muted); font-size: 0.95rem; overflow-wrap: anywhere; }
+    .metric .k { color: var(--muted); font-size: 0.9rem; }
+    .metric .v { margin-top: 4px; font-weight: 700; color: var(--text); font-size: 1.15rem; }
+    .metric .s { margin-top: 2px; color: var(--muted); font-size: 0.9rem; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 820px) {
+      .split { grid-template-columns: 1fr; }
+    }
+
+    .pub {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(10, 15, 20, 0.25);
+      margin-bottom: 10px;
+    }
+
+    .pub .title { color: var(--text); font-weight: 650; }
+    .pub .meta { margin-top: 4px; font-size: 0.92rem; }
+    .pub .links { margin-top: 8px; display: flex; gap: 10px; flex-wrap: wrap; }
 
     footer {
       margin-top: 22px;
@@ -167,53 +195,173 @@
       <img class="headshot" src="headshot.jpg" alt="Sangkeun Matthew Lee" />
       <div>
         <h1>Sangkeun Matthew Lee</h1>
-        <div class="subtitle">Senior Research Staff, Critical Infrastructure Resilience Group, ORNL</div>
+        <div class="subtitle">Senior Research Scientist, Critical Infrastructure Resilience Group, NSSD, ORNL</div>
+        <div class="tagline">
+          Data-driven modeling and analytics across interconnected systems, spanning large-scale graphs, resilience and reliability, and applied machine learning.
+        </div>
 
-        <div class="pills">
-          <a class="pill" href="#summary">Summary</a>
-          <a class="pill" href="#education">Education</a>
-          <a class="pill" href="#projects">Projects</a>
-          <a class="pill" href="#publications">Publications</a>
-          <a class="pill" href="#contact">Contact</a>
-
-          <a class="pill" href="https://scholar.google.com/citations?user=DcyrVNoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-          <a class="pill" href="https://www.ornl.gov/staff-profile/sangkeun-matt-m-lee" target="_blank" rel="noopener noreferrer">ORNL profile</a>
+        <div class="cta">
+          <a class="btn primary" href="https://scholar.google.com/citations?user=DcyrVNoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+          <a class="btn" href="https://www.ornl.gov/staff-profile/sangkeun-matt-m-lee" target="_blank" rel="noopener noreferrer">ORNL profile</a>
+          <a class="btn" href="../author/">Author site</a>
         </div>
       </div>
     </header>
 
     <div class="layout">
       <main>
-        <section class="card" id="summary">
-          <h2>Summary</h2>
-          <p>
-            I work on data-driven modeling and analytics across interconnected systems, including resilience and reliability questions for critical infrastructure.
-            For the authoritative and complete publication list, see my Google Scholar profile.
-          </p>
+        <section class="card">
+          <h2>Focus</h2>
+          <ul>
+            <li>Critical infrastructure resilience and interdependency analytics</li>
+            <li>Large-scale graph mining and analytics</li>
+            <li>Big data systems and architectures</li>
+            <li>Information retrieval and recommender systems</li>
+            <li>Applied machine learning for scientific and operational data</li>
+          </ul>
+        </section>
 
-          <div class="two-col" style="margin-top: 14px;">
-            <div class="card" style="padding: 14px;">
-              <h2 style="margin-bottom: 8px;">Research interests</h2>
-              <ul>
-                <li>Large-scale graph mining and analytics</li>
-                <li>Big data systems and architectures</li>
-                <li>Information retrieval and recommender systems</li>
-                <li>Critical infrastructure resilience and interdependency</li>
-                <li>Applied machine learning for scientific and operational data</li>
-              </ul>
+        <section class="card" style="margin-top: 16px;">
+          <h2>Selected projects</h2>
+          <div class="split">
+            <div>
+              <div class="pub">
+                <div class="title">URBAN-NET</div>
+                <div class="meta">Critical infrastructure interdependency analytics for resilience planning</div>
+              </div>
+              <div class="pub">
+                <div class="title">EAGLE-I</div>
+                <div class="meta">Geo-located energy information, data collection, and standardization</div>
+              </div>
+              <div class="pub">
+                <div class="title">NAERM</div>
+                <div class="meta">Interdependency analysis and system resilience curve modeling</div>
+              </div>
             </div>
-            <div class="card" style="padding: 14px;">
-              <h2 style="margin-bottom: 8px;">Highlights and awards</h2>
-              <ul>
-                <li>ORNL CSMD Distinguished Software Award (2023)</li>
-                <li>IEEE IRI Best Poster Award (2023)</li>
-                <li>R&amp;D 100 Award (2016): ORiGAMI (Oak Ridge Graph Analytics for Medical Innovation)</li>
-              </ul>
+            <div>
+              <div class="pub">
+                <div class="title">TASTI-GRID</div>
+                <div class="meta">Weather and power system resilience correlation analysis</div>
+              </div>
+              <div class="pub">
+                <div class="title">ASCENDS</div>
+                <div class="meta">Advanced data science toolkit for non-data scientists</div>
+              </div>
+              <div class="pub">
+                <div class="title">ORiGAMI</div>
+                <div class="meta">Oak Ridge Graph Analytics for Medical Innovation (R&amp;D 100 Award, 2016)</div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section class="card" id="education" style="margin-top: 16px;">
+        <section class="card" style="margin-top: 16px;">
+          <h2>Selected publications</h2>
+          <div class="split">
+            <div>
+              <h3 style="margin: 0 0 10px; font-size: 1rem; font-weight: 700; color: var(--text);">Top cited</h3>
+
+              <div class="pub">
+                <div class="title">Aggregation and data analysis of corrosion studies in molten chloride and fluoride salts</div>
+                <div class="meta">Journal of Nuclear Materials (2018)</div>
+                <div class="links">
+                  <a href="https://scholar.google.com/scholar?q=Aggregation%20and%20data%20analysis%20of%20corrosion%20studies%20in%20molten%20chloride%20and%20fluoride%20salts" target="_blank" rel="noopener noreferrer">Scholar</a>
+                </div>
+              </div>
+
+              <div class="pub">
+                <div class="title">Solute segregation at the Al/θ′-Al2Cu interface in Al-Cu alloys</div>
+                <div class="meta">Acta Materialia (2017)</div>
+                <div class="links">
+                  <a href="https://scholar.google.com/scholar?q=Solute%20segregation%20at%20the%20Al%2F%CE%B8%E2%80%B2-Al2Cu%20interface%20in%20Al-Cu%20alloys" target="_blank" rel="noopener noreferrer">Scholar</a>
+                </div>
+              </div>
+
+              <div class="pub">
+                <div class="title">PathRank: Ranking nodes on a heterogeneous graph for flexible hybrid recommender systems</div>
+                <div class="meta">Expert Systems with Applications (2013)</div>
+                <div class="links">
+                  <a href="https://scholar.google.com/scholar?q=PathRank%3A%20Ranking%20nodes%20on%20a%20heterogeneous%20graph%20for%20flexible%20hybrid%20recommender%20systems" target="_blank" rel="noopener noreferrer">Scholar</a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 style="margin: 0 0 10px; font-size: 1rem; font-weight: 700; color: var(--text);">Most recent</h3>
+
+              <div class="pub">
+                <div class="title">A dataset of recorded electricity outages by United States county 2014–2022</div>
+                <div class="meta">Scientific Data (2024)</div>
+                <div class="links">
+                  <a href="https://scholar.google.com/scholar?q=A%20dataset%20of%20recorded%20electricity%20outages%20by%20United%20States%20county%202014%E2%80%932022" target="_blank" rel="noopener noreferrer">Scholar</a>
+                </div>
+              </div>
+
+              <div class="pub">
+                <div class="title">Quantifying the power system resilience of the U.S. power grid through weather and power outage data mapping</div>
+                <div class="meta">IEEE Access (2023)</div>
+                <div class="links">
+                  <a href="https://scholar.google.com/scholar?q=Quantifying%20the%20power%20system%20resilience%20of%20the%20U.S.%20power%20grid%20through%20weather%20and%20power%20outage%20data%20mapping" target="_blank" rel="noopener noreferrer">Scholar</a>
+                </div>
+              </div>
+
+              <div class="pub">
+                <div class="title">COVID-19 pandemic ramifications on residential smart homes energy use load profiles</div>
+                <div class="meta">Energy and Buildings (2022)</div>
+                <div class="links">
+                  <a href="https://scholar.google.com/scholar?q=COVID-19%20pandemic%20ramifications%20on%20residential%20smart%20homes%20energy%20use%20load%20profiles" target="_blank" rel="noopener noreferrer">Scholar</a>
+                </div>
+              </div>
+
+              <div class="pub">
+                <div class="title">More publications</div>
+                <div class="meta">See the complete list and citation metrics on Google Scholar.</div>
+                <div class="links">
+                  <a href="https://scholar.google.com/citations?user=DcyrVNoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Open profile</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <section class="card">
+          <h2>Contact</h2>
+          <div class="metrics">
+            <div class="metric">
+              <div class="k">Email</div>
+              <div class="v" style="font-size: 1rem;">lees4 [at] ornl [dot] gov</div>
+              <div class="s">Preferred: reach out via Scholar or ORNL profile when appropriate.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top: 16px;">
+          <h2>Scholar metrics</h2>
+          <div class="metrics">
+            <div class="metric">
+              <div class="k">Citations</div>
+              <div class="v">2036</div>
+              <div class="s">Since 2021: 1155</div>
+            </div>
+            <div class="metric">
+              <div class="k">h-index</div>
+              <div class="v">22</div>
+              <div class="s">Since 2021: 16</div>
+            </div>
+            <div class="metric">
+              <div class="k">i10-index</div>
+              <div class="v">44</div>
+              <div class="s">Since 2021: 28</div>
+            </div>
+          </div>
+          <div style="margin-top: 10px; color: var(--muted); font-size: 0.9rem;">
+            Metrics snapshot from Google Scholar.
+          </div>
+        </section>
+
+        <section class="card" style="margin-top: 16px;">
           <h2>Education</h2>
           <ul>
             <li>KAIST, South Korea — B.S., Computer Science (2004)</li>
@@ -221,88 +369,18 @@
           </ul>
         </section>
 
-        <section class="card" id="projects" style="margin-top: 16px;">
-          <h2>Selected projects</h2>
-          <div class="two-col">
-            <div>
-              <ul>
-                <li>URBAN-NET: interdependency analytics for critical infrastructure resilience</li>
-                <li>EAGLE-I: data collection and standardization for geo-located energy information</li>
-                <li>NAERM: interdependency analysis and system resilience curve modeling</li>
-              </ul>
-            </div>
-            <div>
-              <ul>
-                <li>TASTI-GRID: weather and power system resilience correlation analysis</li>
-                <li>ASCENDS: advanced data science toolkit for non-data scientists</li>
-                <li>ORiGAMI: graph analytics for medical innovation</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section class="card" id="publications" style="margin-top: 16px;">
-          <h2>Publications</h2>
-          <p style="margin-bottom: 10px;">
-            Full publications and citation metrics are on Google Scholar. Below is a short split view for quick scanning.
-          </p>
-
-          <h3 style="margin: 6px 0 8px; font-size: 1rem; font-weight: 700; color: var(--text);">Top cited publications</h3>
-          <ul>
-            <li>Aggregation and data analysis of corrosion studies in molten chloride and fluoride salts (Journal of Nuclear Materials, 2018)</li>
-            <li>Solute segregation at the Al/θ′-Al2Cu interface in Al-Cu alloys (Acta Materialia, 2017)</li>
-            <li>Random walk based entity ranking on graph for multidimensional recommendation (RecSys, 2011)</li>
-            <li>PathRank: Ranking nodes on a heterogeneous graph for flexible hybrid recommender systems (Expert Systems with Applications, 2013)</li>
-          </ul>
-
-          <h3 style="margin: 14px 0 8px; font-size: 1rem; font-weight: 700; color: var(--text);">Most recent publications</h3>
-          <ul>
-            <li>A dataset of recorded electricity outages by United States county 2014–2022 (Scientific Data, 2024)</li>
-            <li>Quantifying the power system resilience of the U.S. power grid through weather and power outage data mapping (IEEE Access, 2023)</li>
-            <li>COVID-19 pandemic ramifications on residential smart homes energy use load profiles (Energy and Buildings, 2022)</li>
-          </ul>
-        </section>
-      </main>
-
-      <aside>
-        <section class="card" id="contact">
-          <h2>Contact</h2>
-          <div class="meta">
-            <div class="row">
-              <div class="label">Email</div>
-              <div class="value">lees4 [at] ornl [dot] gov</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="card" id="elsewhere" style="margin-top: 16px;">
+        <section class="card" style="margin-top: 16px;">
           <h2>Elsewhere</h2>
-          <div class="meta">
-            <div class="row">
-              <div class="label">Author site (writing)</div>
-              <div class="value"><a href="https://johnleespapa.github.io/author-website/" target="_blank" rel="noopener noreferrer">matthewslee.netlify.app</a></div>
+          <div class="metrics">
+            <div class="metric">
+              <div class="k">Writing</div>
+              <div class="v" style="font-size: 1rem;"><a href="../author/">Open author site</a></div>
+              <div class="s">Speculative fiction and book updates.</div>
             </div>
-            <div class="row">
-              <div class="label">YouTube</div>
-              <div class="value"><a href="https://youtube.com/@dailybible?si=RHEnKdJNGYVpZZpt" target="_blank" rel="noopener noreferrer">youtube.com/@dailybible</a></div>
-            </div>
-          </div>
-        </section>
-
-        <section class="card" id="links" style="margin-top: 16px;">
-          <h2>Links</h2>
-          <div class="meta">
-            <div class="row">
-              <div class="label">Google Scholar</div>
-              <div class="value"><a href="https://scholar.google.com/citations?user=DcyrVNoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">scholar.google.com/citations?user=DcyrVNoAAAAJ</a></div>
-            </div>
-            <div class="row">
-              <div class="label">ORNL profile</div>
-              <div class="value"><a href="https://www.ornl.gov/staff-profile/sangkeun-matt-m-lee" target="_blank" rel="noopener noreferrer">ornl.gov/staff-profile/sangkeun-matt-m-lee</a></div>
-            </div>
-            <div class="row">
-              <div class="label">Open source</div>
-              <div class="value"><a href="https://github.com/liza183" target="_blank" rel="noopener noreferrer">github.com/liza183</a></div>
+            <div class="metric">
+              <div class="k">YouTube</div>
+              <div class="v" style="font-size: 1rem;"><a href="https://youtube.com/@dailybible?si=RHEnKdJNGYVpZZpt" target="_blank" rel="noopener noreferrer">Open channel</a></div>
+              <div class="s">Catholic lay content.</div>
             </div>
           </div>
         </section>
@@ -312,10 +390,9 @@
     <footer>
       <div>© 2026 Sangkeun Matthew Lee</div>
       <div>
-        <a href="#contact">Contact</a> ·
-        <a href="#elsewhere">Elsewhere</a> ·
-        <a href="#projects">Projects</a> ·
-        <a href="#publications">Publications</a>
+        <a href="https://scholar.google.com/citations?user=DcyrVNoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Scholar</a> ·
+        <a href="https://www.ornl.gov/staff-profile/sangkeun-matt-m-lee" target="_blank" rel="noopener noreferrer">ORNL</a> ·
+        <a href="../author/">Author</a>
       </div>
     </footer>
   </div>
