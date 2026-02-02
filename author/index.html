@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthew S. Lee | Author</title>
+    <meta name="description" content="Matthew S. Lee - Author of The Perfect Deficiency: 8 Stories Of AI, Human Collapse, and Cosmic Horror">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #16161f;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --accent-glow: rgba(99, 102, 241, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .author-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #e8e8e8 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .author-tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: start;
+            padding: 40px 0 80px;
+        }
+
+        .book-cover {
+            position: relative;
+        }
+
+        .book-cover img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.8),
+                0 0 60px var(--accent-glow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-cover:hover img {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 35px 60px -12px rgba(0, 0, 0, 0.9),
+                0 0 80px var(--accent-glow);
+        }
+
+        .book-info h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .book-subtitle {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .book-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .book-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .book-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .book-features li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .book-features li::before {
+            content: '•';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .book-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            border-left: 2px solid var(--accent);
+            padding-left: 20px;
+            margin: 24px 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .newsletter-box {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 48px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .newsletter-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .newsletter-box p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            padding: 14px 18px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            border-color: var(--accent);
+        }
+
+        .newsletter-form input[type="email"]::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .newsletter-form button {
+            padding: 14px 24px;
+            white-space: nowrap;
+        }
+
+        .newsletter-privacy {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 16px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .author-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border: 3px solid rgba(255,255,255,0.1);
+        }
+
+        .about-text h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            max-width: 700px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .author-photo {
+                margin: 0 auto 24px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .author-name {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .book-cover {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            nav {
+                gap: 24px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-box {
+                padding: 32px 24px;
+            }
+
+            .book-features li {
+                text-align: left;
+            }
+
+            .book-quote {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="author-name">Matthew S. Lee</h1>
+            <p class="author-tagline">Author • Speculative Fiction</p>
+        </header>
+
+        <nav>
+            <a href="#books">Books</a>
+            <a href="#newsletter">Newsletter</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <section class="hero" id="books">
+            <div class="book-cover">
+                <img src="book-cover.jpg" alt="The Perfect Deficiency book cover">
+            </div>
+            <div class="book-info">
+                <h2>The Perfect Deficiency</h2>
+                <p class="book-subtitle">8 Stories Of AI, Human Collapse, and Cosmic Horror</p>
+                
+                <p class="book-tagline">
+                    What remains of humanity when machines learn to love—and we forget how to feel?
+                </p>
+                
+                <p class="book-description">
+                    A dark sci-fi and cosmic horror collection often described as 
+                    <strong>Black Mirror meets Ted Chiang</strong>. Eight standalone stories that explore:
+                </p>
+                
+                <ul class="book-features">
+                    <li>Artificial intelligence that behaves in unsettling, unexpected ways</li>
+                    <li>Societies where time, labor, or memory quietly break down</li>
+                    <li>Technologies that promise efficiency, comfort, or wealth—at an invisible cost</li>
+                    <li>Ordinary people pushed into moral choices they don't realize they're making</li>
+                </ul>
+
+                <p class="book-quote">
+                    Ranked #1 in Horror Suspense and #1 in Science Fiction Anthologies on Amazon Kindle (January 2026).
+                </p>
+
+                <p class="book-quote">
+                    "Haunting and beautifully written. The slow disappearance and the metaphor of 'uselessness' feel chilling yet deeply human. It left me thinking long after I finished." — Early Reader Comment (Reddit)
+                </p>
+
+                <p class="book-quote">
+                    "Deep, meaningful, and most importantly, AWESOME! A great job by a true wordsmith." — Early Reader Comment (Reddit)
+                </p>
+
+                <div class="cta-buttons">
+                    <a href="https://www.amazon.com/dp/B0GJMQ4RYQ" class="btn btn-primary" target="_blank">
+                        Get on Amazon
+                    </a>
+                    <a href="https://read.amazon.com/?asin=B0GJMQ4RYQ&_encoding=UTF8&ref=dbs_p_ebk_r00_pbcb_rnvc00" class="btn btn-secondary" target="_blank">
+                        Read Sample
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter" id="newsletter">
+            <div class="newsletter-box">
+                <h3>Stay in the Loop</h3>
+                <p>Get notified about new releases, behind-the-scenes stories, and exclusive content.</p>
+                <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="newsletter">
+                    <p style="display:none"><input name="bot-field"></p>
+                    <input type="email" name="email" placeholder="your@email.com" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="about-content">
+                <img src="author-photo.jpg" alt="Matthew S. Lee" class="author-photo">
+                <div class="about-text">
+                    <h3>About the Author</h3>
+                    <p>
+                        Matthew S. Lee is a Korean-immigrant computer scientist, researcher, and writer based in Tennessee. 
+                        His work begins with a simple, unsettling "what-if"—a spark that ignites deep explorations into 
+                        the intersections of theology, technology, and the human condition.
+                    </p>
+                    <p>
+                        A dedicated video gamer with a penchant for deep-diving into complex world-building and lore, 
+                        Matthew crafts speculative fiction that challenges the boundaries of reality and faith.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="social-links">
+                <a href="https://www.reddit.com/r/MatthewLeeStories" target="_blank">Reddit: r/MatthewLeeStories</a>
+            </div>
+            <p class="copyright">© 2026 Matthew S. Lee. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
